@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "698282116456",
+    "project_id": "messapp-b9eed",
+    "storage_bucket": "messapp-b9eed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698282116456:android:c075310f8857e894b142dd",
+        "android_client_info": {
+          "package_name": "com.project_mess_app.mess_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "698282116456-o6mnefn5d2hrgod2451vfl5nhafnierf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project_mess_app.mess_app",
+            "certificate_hash": "b7d604ec86c69c135d0fa95f473619884570ec02"
+          }
+        },
+        {
+          "client_id": "698282116456-3gsl8mag9kl5init72mm3d05eh85vosr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChFEHv_Y07bQ2I0WgZQ4XVhGj1JDpb0Tw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "698282116456-3gsl8mag9kl5init72mm3d05eh85vosr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

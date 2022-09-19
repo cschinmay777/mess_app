@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../controllers/AuthControllers/authcontroller.dart';
+import 'package:mess_app/controllers/AuthControllers/authcontroller.dart';
 
 const List<String> list = <String>['Male', 'Female', 'Other'];
 const List<String> category_list = <String>['User', 'Owner'];
 
-class CreateAccount extends StatefulWidget {
-  const CreateAccount({Key? key}) : super(key: key);
+class EditProfile extends StatefulWidget {
+  const EditProfile({Key? key}) : super(key: key);
 
   @override
-  _CreateAccountState createState() => _CreateAccountState();
+  _EditProfileState createState() => _EditProfileState();
 }
 
-class _CreateAccountState extends State<CreateAccount>
+class _EditProfileState extends State<EditProfile>
     with TickerProviderStateMixin {
-  TextEditingController? namecontroller;
+  TextEditingController? textController1;
 
   TextEditingController? textController2;
 
@@ -31,9 +30,9 @@ class _CreateAccountState extends State<CreateAccount>
 
   bool? switchListTileValue;
 
-  TextEditingController? emailcontroller;
+  TextEditingController? textController8;
 
-  TextEditingController? passwordcontroller;
+  TextEditingController? textController9;
   String dropdownValue = list.first;
   String category = category_list.first;
 
@@ -41,15 +40,15 @@ class _CreateAccountState extends State<CreateAccount>
   void initState() {
     super.initState();
 
-    namecontroller = TextEditingController();
+    textController1 = TextEditingController();
     textController2 = TextEditingController();
     textController3 = TextEditingController();
     textController4 = TextEditingController();
     textController5 = TextEditingController();
     textController6 = TextEditingController();
     textController7 = TextEditingController();
-    emailcontroller = TextEditingController();
-    passwordcontroller = TextEditingController();
+    textController8 = TextEditingController();
+    textController9 = TextEditingController();
   }
 
   @override
@@ -57,7 +56,6 @@ class _CreateAccountState extends State<CreateAccount>
     Size size = MediaQuery.of(context).size;
     var height = size.height;
     var width = size.width;
-
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -80,61 +78,63 @@ class _CreateAccountState extends State<CreateAccount>
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 60, 20, 10),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Center(
-                          child: Container(
-                            width: width / 1.2,
-                            height: height / 13,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 6,
-                                  color: Color(0xFFD1A06B),
-                                  offset: Offset(0, 2),
-                                  spreadRadius: 7,
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 12, 0, 10),
-                              child: Center(
-                                child: Text(
-                                  'Create Account',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Poppins',
-                                    fontSize: 28,
+                  Expanded(
+                    flex: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 60, 20, 10),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Center(
+                            child: Container(
+                              width: width / 1.2,
+                              height: height / 13,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 6,
+                                    color: Color(0xFFD1A06B),
+                                    offset: Offset(0, 2),
+                                    spreadRadius: 7,
+                                  )
+                                ],
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0, 12, 0, 10),
+                                child: Center(
+                                  child: Text(
+                                    'Edit Profile',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Poppins',
+                                      fontSize: 28,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   Expanded(
-                      flex: 8,
+                      flex: 7,
                       child: Stack(
                         children: [
                           Align(
                             alignment: AlignmentDirectional(0, 0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  20, 20, 20, 20),
+                                  20, 50, 20, 20),
                               child: Container(
-                                width: width / 1.2,
-                                height: height / 1.3,
+                                width: width / 1.1,
+                                height: height / 1.5,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   boxShadow: [
@@ -150,10 +150,11 @@ class _CreateAccountState extends State<CreateAccount>
                                 child: SingleChildScrollView(
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            20, 15, 20, 10),
+                                            20, 15, 20, 20),
                                         child: Text(
                                           'Enter your details',
                                           textAlign: TextAlign.center,
@@ -167,7 +168,7 @@ class _CreateAccountState extends State<CreateAccount>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 10, 20, 5),
                                         child: TextFormField(
-                                          controller: namecontroller,
+                                          controller: textController1,
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
@@ -674,114 +675,111 @@ class _CreateAccountState extends State<CreateAccount>
                                           ),
                                         ]),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            20, 10, 20, 5),
-                                        child: TextFormField(
-                                          controller: emailcontroller,
-                                          autofocus: false,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            hintText: 'Email',
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0xFFD7DDEE),
-                                                width: 2,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0xFFD7DDEE),
-                                                width: 2,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 2,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 2,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                            ),
-                                          ),
-                                          style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 12,
-                                          ),
-                                          keyboardType:
-                                              TextInputType.emailAddress,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            20, 10, 20, 5),
-                                        child: TextFormField(
-                                          controller: passwordcontroller,
-                                          autofocus: false,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            hintText: 'Password',
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0xFFD7DDEE),
-                                                width: 2,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0xFFD7DDEE),
-                                                width: 2,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 2,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 2,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                            ),
-                                          ),
-                                          style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 12,
-                                          ),
-                                          keyboardType:
-                                              TextInputType.visiblePassword,
-                                        ),
-                                      ),
+                                      // Padding(
+                                      //   padding: EdgeInsetsDirectional.fromSTEB(
+                                      //       20, 10, 20, 5),
+                                      //   child: TextFormField(
+                                      //     controller: textController8,
+                                      //     autofocus: false,
+                                      //     obscureText: false,
+                                      //     decoration: InputDecoration(
+                                      //       hintText: 'Email',
+                                      //       enabledBorder: OutlineInputBorder(
+                                      //         borderSide: BorderSide(
+                                      //           color: Color(0xFFD7DDEE),
+                                      //           width: 2,
+                                      //         ),
+                                      //         borderRadius:
+                                      //             BorderRadius.circular(20),
+                                      //       ),
+                                      //       focusedBorder: OutlineInputBorder(
+                                      //         borderSide: BorderSide(
+                                      //           color: Color(0xFFD7DDEE),
+                                      //           width: 2,
+                                      //         ),
+                                      //         borderRadius:
+                                      //             BorderRadius.circular(20),
+                                      //       ),
+                                      //       errorBorder: OutlineInputBorder(
+                                      //         borderSide: BorderSide(
+                                      //           color: Color(0x00000000),
+                                      //           width: 2,
+                                      //         ),
+                                      //         borderRadius:
+                                      //             BorderRadius.circular(20),
+                                      //       ),
+                                      //       focusedErrorBorder: OutlineInputBorder(
+                                      //         borderSide: BorderSide(
+                                      //           color: Color(0x00000000),
+                                      //           width: 2,
+                                      //         ),
+                                      //         borderRadius:
+                                      //             BorderRadius.circular(20),
+                                      //       ),
+                                      //     ),
+                                      //     style: TextStyle(
+                                      //       fontFamily: 'Poppins',
+                                      //       fontSize: 12,
+                                      //     ),
+                                      //     keyboardType: TextInputType.emailAddress,
+                                      //   ),
+                                      // ),
+                                      // Padding(
+                                      //   padding: EdgeInsetsDirectional.fromSTEB(
+                                      //       20, 10, 20, 5),
+                                      //   child: TextFormField(
+                                      //     controller: textController9,
+                                      //     autofocus: false,
+                                      //     obscureText: false,
+                                      //     decoration: InputDecoration(
+                                      //       hintText: 'Password',
+                                      //       enabledBorder: OutlineInputBorder(
+                                      //         borderSide: BorderSide(
+                                      //           color: Color(0xFFD7DDEE),
+                                      //           width: 2,
+                                      //         ),
+                                      //         borderRadius:
+                                      //             BorderRadius.circular(20),
+                                      //       ),
+                                      //       focusedBorder: OutlineInputBorder(
+                                      //         borderSide: BorderSide(
+                                      //           color: Color(0xFFD7DDEE),
+                                      //           width: 2,
+                                      //         ),
+                                      //         borderRadius:
+                                      //             BorderRadius.circular(20),
+                                      //       ),
+                                      //       errorBorder: OutlineInputBorder(
+                                      //         borderSide: BorderSide(
+                                      //           color: Color(0x00000000),
+                                      //           width: 2,
+                                      //         ),
+                                      //         borderRadius:
+                                      //             BorderRadius.circular(20),
+                                      //       ),
+                                      //       focusedErrorBorder: OutlineInputBorder(
+                                      //         borderSide: BorderSide(
+                                      //           color: Color(0x00000000),
+                                      //           width: 2,
+                                      //         ),
+                                      //         borderRadius:
+                                      //             BorderRadius.circular(20),
+                                      //       ),
+                                      //     ),
+                                      //     style: TextStyle(
+                                      //       fontFamily: 'Poppins',
+                                      //       fontSize: 12,
+                                      //     ),
+                                      //     keyboardType:
+                                      //         TextInputType.visiblePassword,
+                                      //   ),
+                                      // ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 16, 20, 0),
                                         child: TextButton(
-                                          onPressed: registerUser,
-                                          child: Text("Register",
+                                          onPressed: signout,
+                                          child: Text("Done",
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w600,
@@ -814,10 +812,7 @@ class _CreateAccountState extends State<CreateAccount>
     );
   }
 
-  void registerUser() async {
-    Get.find<AuthController>().createUser(
-        fname: namecontroller!.text,
-        email: emailcontroller!.text,
-        password: passwordcontroller!.text);
+  void signout() async {
+    Get.find<AuthController>().signout();
   }
 }
