@@ -26,7 +26,7 @@ class AuthController extends GetxController {
   void login({required String email, required String password}) async {
     await _auth
         .signInWithEmailAndPassword(email: email, password: password)
-        .then((value) => Get.toNamed("/editprofile"))
+        .then((value) => Get.toNamed("/User"))
         .catchError((onError) => Get.snackbar("Error", onError));
   }
 
