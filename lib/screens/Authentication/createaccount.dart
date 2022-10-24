@@ -17,17 +17,17 @@ class _CreateAccountState extends State<CreateAccount>
     with TickerProviderStateMixin {
   TextEditingController? namecontroller;
 
-  TextEditingController? textController2;
+  TextEditingController? phoneController;
 
-  TextEditingController? textController3;
+  TextEditingController? addressController;
 
-  TextEditingController? textController4;
+  TextEditingController? occupationcontroller;
 
-  TextEditingController? textController5;
+  TextEditingController? messnameController;
 
-  TextEditingController? textController6;
+  TextEditingController? addmessController;
 
-  TextEditingController? textController7;
+  TextEditingController? contactController;
 
   bool? switchListTileValue;
 
@@ -42,12 +42,12 @@ class _CreateAccountState extends State<CreateAccount>
     super.initState();
 
     namecontroller = TextEditingController();
-    textController2 = TextEditingController();
-    textController3 = TextEditingController();
-    textController4 = TextEditingController();
-    textController5 = TextEditingController();
-    textController6 = TextEditingController();
-    textController7 = TextEditingController();
+    phoneController = TextEditingController();
+    addressController = TextEditingController();
+    occupationcontroller = TextEditingController();
+    messnameController = TextEditingController();
+    addmessController = TextEditingController();
+    contactController = TextEditingController();
     emailcontroller = TextEditingController();
     passwordcontroller = TextEditingController();
   }
@@ -216,7 +216,7 @@ class _CreateAccountState extends State<CreateAccount>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 10, 20, 5),
                                         child: TextFormField(
-                                          controller: textController2,
+                                          controller: phoneController,
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
@@ -265,7 +265,7 @@ class _CreateAccountState extends State<CreateAccount>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 10, 20, 5),
                                         child: TextFormField(
-                                          controller: textController3,
+                                          controller: addressController,
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
@@ -314,7 +314,7 @@ class _CreateAccountState extends State<CreateAccount>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             20, 10, 20, 5),
                                         child: TextFormField(
-                                          controller: textController4,
+                                          controller: occupationcontroller,
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
@@ -495,7 +495,7 @@ class _CreateAccountState extends State<CreateAccount>
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     20, 10, 20, 5),
                                             child: TextFormField(
-                                              controller: textController5,
+                                              controller: messnameController,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -547,7 +547,7 @@ class _CreateAccountState extends State<CreateAccount>
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     20, 10, 20, 5),
                                             child: TextFormField(
-                                              controller: textController6,
+                                              controller: addmessController,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -599,7 +599,7 @@ class _CreateAccountState extends State<CreateAccount>
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     20, 10, 20, 5),
                                             child: TextFormField(
-                                              controller: textController7,
+                                              controller: contactController,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -816,8 +816,18 @@ class _CreateAccountState extends State<CreateAccount>
 
   void registerUser() async {
     Get.find<AuthController>().createUser(
-        fname: namecontroller!.text,
-        email: emailcontroller!.text,
-        password: passwordcontroller!.text);
+      collection: category,
+      name: namecontroller!.text,
+      email: emailcontroller!.text,
+      password: passwordcontroller!.text,
+      phone: phoneController!.text,
+      address: addressController!.text,
+      occupation: occupationcontroller!.text,
+      gender: dropdownValue,
+      mess_name: messnameController!.text,
+      add_mess: addmessController!.text,
+      contact: contactController!.text,
+      veg: (switchListTileValue!),
+    );
   }
 }
