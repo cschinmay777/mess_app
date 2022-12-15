@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mess_app/bindings/authbindings.dart';
 import 'package:mess_app/decisionlog.dart';
+import 'package:mess_app/models.dart';
 import 'package:mess_app/screens/Authentication/createaccount.dart';
 import 'package:mess_app/screens/Authentication/forgotpassword.dart';
 import 'package:mess_app/screens/Authentication/loginpage.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
       title: "Mess App",
       initialBinding: AuthBinding(),
       initialRoute: "/mywid",
+      defaultTransition: Transition.zoom,
       getPages: [
         GetPage(name: "/", page: () => WelcomeScreen()),
         GetPage(
@@ -44,10 +46,18 @@ class MyApp extends StatelessWidget {
             page: () => CreateAccount(),
             binding: AuthBinding()),
         GetPage(name: "/User", page: () => UserScreen()),
-        GetPage(name: "/OnTapUser", page: () => Registration()),
+        GetPage(name: "/OnTapUser", page: () => OnTapMess()),
         GetPage(name: "/issignin", page: () => IsSignin()),
         GetPage(name: "/owner", page: () => OwnerHomeScreen()),
         GetPage(name: "/mywid", page: () => MyWidget()),
+        GetPage(
+            name: "/ontap",
+            page: () {
+              MessModel messmodel = Get.arguments;
+              transition:
+              Transition.leftToRight;
+              return OnTapMess();
+            }),
       ],
     );
   }

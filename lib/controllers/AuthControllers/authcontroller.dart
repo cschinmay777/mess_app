@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mess_app/controllers/database_controllers/create_controller.dart';
+import 'package:mess_app/screens/Authentication/loginpage.dart';
 import 'package:mess_app/widgets/error_box.dart';
 
+import '../../decisionlog.dart';
 import '../../models/user_model.dart';
 
 class AuthController extends GetxController {
@@ -64,7 +66,8 @@ class AuthController extends GetxController {
     loggedinuser = _auth.currentUser;
     //.then((value) => Get.toNamed("/User"));
     if (user != null) {
-      Get.toNamed("/User");
+      Get.offAll(() => MyWidget());
+      // Get.toNamed("/mywid");
       Error_Box(
         message: "Loged in",
       );
@@ -77,6 +80,6 @@ class AuthController extends GetxController {
   }
 
   void signout() {
-    _auth.signOut().then((value) => Get.toNamed("/login"));
+    _auth.signOut().then((value) => Get.offAll(() => LoginPage()));
   }
 }

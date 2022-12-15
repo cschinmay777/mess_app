@@ -32,8 +32,12 @@ class MyWidget extends StatelessWidget {
                 }
 
                 if (snapshot.data!.category == "Owner") {
+                  // Get.off('/owner');
+                  // Get.off(() => OwnerHomeScreen());
                   return OwnerHomeScreen();
                 } else if (snapshot.data!.category == "User") {
+                  // Get.off('/User');
+                  // Get.off(() => UserScreen());
                   return UserScreen();
                 }
 

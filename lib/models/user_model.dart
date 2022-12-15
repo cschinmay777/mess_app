@@ -93,7 +93,7 @@ class UserDetails {
     Box.write(
         'category', map['category'] != null ? map['category'] as String : null);
     Box.write('messname',
-        map['mess name'] != null ? map['mess name'] as String : null);
+        map['mess name']); //!= null ? map['mess name'] as String : null);
     Box.write('messadress',
         map['add_mess'] != null ? map['add_mess'] as String : null);
     Box.write(
@@ -101,5 +101,6 @@ class UserDetails {
     Box.write('veg', map['veg'] != null ? map['veg'] as bool : null);
     Box.write('description',
         map['description'] != null ? map['description'] as String : null);
+    // return 0;
   }
 }

@@ -8,6 +8,8 @@ import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../constants.dart';
+
 class ImageController extends GetxController {
   var selectedImagePath = ''.obs;
   var selectedImageSize = ''.obs;
@@ -56,8 +58,10 @@ class ImageController extends GetxController {
     //     ((File(compressedImagePath.value)).lengthSync() / 1024 / 1024)
     //             .toStringAsFixed(2) +
     //         " MB";
-    fStorage.Reference reference =
-        fStorage.FirebaseStorage.instance.ref().child("menus").child("hello");
+    fStorage.Reference reference = fStorage.FirebaseStorage.instance
+        .ref()
+        .child("menus")
+        .child("${Box.read('name')}_${Box.read('mob_no')} ");
     fStorage.UploadTask uploadTask =
         reference.putFile(File(selectedImagePath.value));
     fStorage.TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() {});

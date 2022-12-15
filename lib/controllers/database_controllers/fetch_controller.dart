@@ -21,6 +21,8 @@ class FetchController extends GetxController {
 
   Stream<List<MessModel>> getMessList() {
     print("Yes working");
+    // final data = FirebaseFirestore.instance.collection("cities").get();
+    // return (MessModel.fromMap(data));
     return collectionReference
         .snapshots()
         .map((event) => event.docs.map((e) => MessModel.fromMap(e)).toList());

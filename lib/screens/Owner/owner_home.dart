@@ -110,7 +110,7 @@ class OwnerHomeScreen extends GetView<FetchController> {
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           5, 5, 5, 5),
-                                      child: Text(Box.read('messname'),
+                                      child: Text("${Box.read('messname')} ",
                                           style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold,
@@ -121,7 +121,7 @@ class OwnerHomeScreen extends GetView<FetchController> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         5, 16, 5, 5),
                                     child: Text(
-                                      Box.read('description'),
+                                      " ${Box.read('description')} ",
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
                                         fontFamily: 'Poppins',
@@ -233,7 +233,7 @@ class OwnerHomeScreen extends GetView<FetchController> {
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           5, 0, 5, 5),
-                                      child: Text(Box.read('messname'),
+                                      child: Text("${Box.read('messname')} ",
                                           style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold,
@@ -353,9 +353,27 @@ class OwnerHomeScreen extends GetView<FetchController> {
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   5, 16, 5, 5),
-                                          child: (Box.read('photourl') != "")
+                                          child: (Box.read('photourl') != null)
                                               ? Image.network(
-                                                  Box.read('photourl'))
+                                                  Box.read('photourl'),
+                                                  frameBuilder: (context,
+                                                      child,
+                                                      frame,
+                                                      wasSynchronouslyLoaded) {
+                                                    return child;
+                                                  },
+                                                  loadingBuilder: (context,
+                                                      child, loadingProgress) {
+                                                    if (loadingProgress ==
+                                                        null) {
+                                                      return child;
+                                                    } else {
+                                                      return Center(
+                                                          child:
+                                                              const CircularProgressIndicator());
+                                                    }
+                                                  },
+                                                )
                                               : Text(
                                                   "Add image of menu",
                                                   textAlign: TextAlign.start,

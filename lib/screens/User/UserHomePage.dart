@@ -120,15 +120,23 @@ class _UserScreenState extends State<UserScreen> {
                             child: Obx(
                               () => ListView.builder(
                                   itemCount: controller.messlist.length,
-                                  itemBuilder: (context, index) =>
-                                      (controller.messlist[index].category ==
-                                              "Owner")
-                                          ? MessCard(
+                                  itemBuilder: (context, index) => (controller
+                                              .messlist[index].category ==
+                                          "Owner")
+                                      ? GestureDetector(
+                                          onTap: () {
+                                            Get.toNamed('ontap',
+                                                arguments:
+                                                    controller.messlist[index]);
+                                          },
+                                          child: MessCard(
                                               messname: controller
                                                   .messlist[index].messname!,
                                               description: controller
-                                                  .messlist[index].description!)
-                                          : Center()),
+                                                  .messlist[index]
+                                                  .description!),
+                                        )
+                                      : Center()),
                             )),
                       )
                     ],
