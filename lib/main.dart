@@ -9,10 +9,12 @@ import 'package:mess_app/screens/Authentication/createaccount.dart';
 import 'package:mess_app/screens/Authentication/forgotpassword.dart';
 import 'package:mess_app/screens/Authentication/loginpage.dart';
 import 'package:mess_app/screens/Authentication/welcomescreen.dart';
-import 'package:mess_app/screens/Owner/owner_home.dart';
+import 'package:mess_app/screens/MessOwnerPage/MessOwnerPage.dart';
 import 'package:mess_app/screens/User/OnTapMess.dart';
-import 'package:mess_app/screens/User/UserHomePage.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:mess_app/screens/User/Map.dart';
+import 'package:mess_app/screens/UserOntapMess/UserOnTap.dart';
+import 'package:mess_app/screens/userhomepage/userhomepage.dart';
 
 import 'issignedin.dart';
 
@@ -45,10 +47,11 @@ class MyApp extends StatelessWidget {
             name: "/create",
             page: () => CreateAccount(),
             binding: AuthBinding()),
-        GetPage(name: "/User", page: () => UserScreen()),
-        GetPage(name: "/OnTapUser", page: () => OnTapMess()),
+        GetPage(name: "/User", page: () => userHomeScreen()),
+        GetPage(name: "/OnTapUser", page: () => UserOnTap()),
+        GetPage(name: "/Map", page: () => Distance()),
         GetPage(name: "/issignin", page: () => IsSignin()),
-        GetPage(name: "/owner", page: () => OwnerHomeScreen()),
+        GetPage(name: "/owner", page: () => MessOwnerPage()),
         GetPage(name: "/mywid", page: () => MyWidget()),
         GetPage(
             name: "/ontap",

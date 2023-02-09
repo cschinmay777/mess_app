@@ -8,6 +8,7 @@ import 'package:mess_app/screens/Authentication/welcomescreen.dart';
 import 'package:mess_app/screens/Owner/owner_home.dart';
 import 'package:mess_app/screens/User/UserHomePage.dart';
 import 'package:get/get.dart';
+import 'package:mess_app/screens/userhomepage/userhomepage.dart';
 
 class MyWidget extends StatelessWidget {
   // const MyWidget({Key? key}) : super(key: key);
@@ -38,7 +39,7 @@ class MyWidget extends StatelessWidget {
                 } else if (snapshot.data!.category == "User") {
                   // Get.off('/User');
                   // Get.off(() => UserScreen());
-                  return UserScreen();
+                  return userHomeScreen();
                 }
 
                 return Scaffold(
