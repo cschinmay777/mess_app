@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../../Colors/colors.dart';
 import '../userhomepage/userhomepage.dart';
 
 class UserOnTap extends StatefulWidget {
@@ -12,12 +13,6 @@ class UserOnTap extends StatefulWidget {
 class _UserOnTapState extends State<UserOnTap> {
   PageController? pageViewController;
   final _unfocusNode = FocusNode();
-  static const primaryBG = const Color.fromARGB(100, 241, 244, 248);
-  static const secondaryBG = const Color.fromARGB(100, 255, 255, 255);
-  static const primaryText = const Color.fromARGB(100, 16, 18, 19);
-  static const secondaryText = const Color.fromARGB(100, 87, 99, 108);
-  static const tertiary = const Color.fromARGB(100, 238, 139, 96);
-  static const alternate = const Color.fromARGB(100, 255, 89, 99);
   @override
   void dispose() {
     _unfocusNode.dispose();
