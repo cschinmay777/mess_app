@@ -4,11 +4,12 @@ import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mess_app/controllers/database_controllers/create_controller.dart';
-import 'package:mess_app/screens/Authentication/loginpage.dart';
+// import 'package:mess_app/screens/Authentication/loginpage.dart';
 import 'package:mess_app/widgets/error_box.dart';
 
-import '../../decisionlog.dart';
-import '../../models/user_model.dart';
+// import '../../decisionlog.dart';
+// import '../../models/user_model.dart';
+import '../loginpage.dart';
 
 class AuthController extends GetxController {
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -66,8 +67,8 @@ class AuthController extends GetxController {
     loggedinuser = _auth.currentUser;
     //.then((value) => Get.toNamed("/User"));
     if (user != null) {
-      Get.offAll(() => MyWidget());
-      // Get.toNamed("/mywid");
+      // Get.offAll(() => MyWidget());
+      Get.offNamed("/mywid");
       Error_Box(
         message: "Loged in",
       );

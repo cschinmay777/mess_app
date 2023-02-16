@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mess_app/controllers/AuthControllers/authcontroller.dart';
+// import 'package:mess_app/controllers/AuthControllers/authcontroller.dart';
 import 'package:mess_app/models/user_model.dart';
 
 import '../constants.dart';
+import '../screens/loginscreen/controllers/authcontroller.dart';
 // import 'package:flutter_app_learning/profile.dart';
 // import 'package:flutter_app_learning/routes.dart';
 

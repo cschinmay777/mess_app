@@ -3,13 +3,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mess_app/controllers/AuthControllers/authcontroller.dart';
+// import 'package:mess_app/controllers/AuthControllers/authcontroller.dart';
 import 'package:mess_app/models/user_model.dart';
 import 'package:mess_app/screens/Authentication/edit_profile.dart';
-import 'package:mess_app/screens/Authentication/loginpage.dart';
-import 'package:mess_app/screens/Authentication/welcomescreen.dart';
 import 'package:mess_app/screens/Owner/owner_home.dart';
-import 'package:mess_app/screens/User/UserHomePage.dart';
+import 'package:mess_app/screens/loginscreen/controllers/authcontroller.dart';
+import 'package:mess_app/screens/userhomepage/userhomepage.dart';
+import 'package:mess_app/screens/welcomescreen/welcomescreen.dart';
 
 class IsSignin extends GetWidget<AuthController> {
   @override
@@ -52,12 +52,12 @@ class _DecisionState extends State<Decision> {
           if (snapshot.connectionState == ConnectionState.done) {
             Map<String, dynamic> data =
                 snapshot.data!.data() as Map<String, dynamic>;
-            final userdata= UserDetails.fromMap(data);
+            final userdata = UserDetails.fromMap(data);
             print("   userdata.category:  ${userdata.category}");
 
             return (data['category'].toString() == "Owner")
                 ? OwnerHomeScreen()
-                : UserScreen();
+                : userHomeScreen();
           }
           return WelcomeScreen();
         });

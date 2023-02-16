@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mess_app/controllers/AuthControllers/authcontroller.dart';
+// import 'package:mess_app/controllers/AuthControllers/authcontroller.dart';
+
+import '../loginscreen/controllers/authcontroller.dart';
 
 const List<String> list = <String>['Male', 'Female', 'Other'];
 const List<String> category_list = <String>['User', 'Owner'];

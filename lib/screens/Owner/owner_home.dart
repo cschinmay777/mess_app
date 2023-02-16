@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:mess_app/controllers/AuthControllers/authcontroller.dart';
+// import 'package:mess_app/controllers/AuthControllers/authcontroller.dart';
 import 'package:mess_app/controllers/database_controllers/update_controller.dart';
 import 'package:mess_app/controllers/imageController/image_picker_controller.dart';
 import 'package:mess_app/models/user_model.dart';
@@ -12,12 +12,13 @@ import 'package:mess_app/widgets/nav_drawer.dart';
 import 'package:get/get.dart';
 import '../../constants.dart';
 import '../../controllers/database_controllers/fetch_controller.dart';
+import '../loginscreen/controllers/authcontroller.dart';
 
 class OwnerHomeScreen extends GetView<FetchController> {
   var controller1 = Get.find<ImageController>();
   var controller2 = Get.find<AuthController>();
-  var controller3 = Get.find<FetchController>();
-
+  // var controller3 = Get.find<FetchController>();
+  var controller3 = Get.put(FetchController());
   TextEditingController descController = TextEditingController();
 
   // @override

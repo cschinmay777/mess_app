@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mess_app/screens/loginscreen/controllers/authcontroller.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../userhomepage/userhomepage.dart';
-// import '../userhomepage/userhomepage.dart';
+// import '../userhomepage/userhomepagecontroller.dart';
 
 class MessOwnerPage extends StatefulWidget {
-  const MessOwnerPage({Key? key}) : super(key: key);
+  // const MessOwnerPage({Key? key}) : super(key: key);
 
   @override
   State<MessOwnerPage> createState() => _MessOwnerPageState();
@@ -20,6 +22,7 @@ class _MessOwnerPageState extends State<MessOwnerPage> {
   static const secondaryText = const Color.fromARGB(100, 87, 99, 108);
   static const tertiary = const Color.fromARGB(100, 238, 139, 96);
   static const alternate = const Color.fromARGB(100, 255, 89, 99);
+  var controller = Get.put(AuthController());
   @override
   void dispose() {
     _unfocusNode.dispose();
@@ -64,44 +67,49 @@ class _MessOwnerPageState extends State<MessOwnerPage> {
                           Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(10, 0, 20, 5),
-                            child: Container(
-                              width: 80,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFFCC3A8),
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(0),
-                                  bottomRight: Radius.circular(0),
-                                  topLeft: Radius.circular(20),
-                                  topRight: Radius.circular(20),
+                            child: GestureDetector(
+                              onTap: () {
+                                controller.signout();
+                              },
+                              child: Container(
+                                width: 80,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFFCC3A8),
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(0),
+                                    bottomRight: Radius.circular(0),
+                                    topLeft: Radius.circular(20),
+                                    topRight: Radius.circular(20),
+                                  ),
                                 ),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Align(
-                                    alignment: AlignmentDirectional(0, 0.15),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10, 0, 10, 0),
-                                      child: Text(
-                                        '4.4',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'Poppins',
-                                          color: Colors.black,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w600,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Align(
+                                      alignment: AlignmentDirectional(0, 0.15),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10, 0, 10, 0),
+                                        child: Text(
+                                          '4.4',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            color: Colors.black,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Icon(
-                                    Icons.star_rate_rounded,
-                                    color: Colors.black,
-                                    size: 24,
-                                  ),
-                                ],
+                                    Icon(
+                                      Icons.star_rate_rounded,
+                                      color: Colors.black,
+                                      size: 24,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),

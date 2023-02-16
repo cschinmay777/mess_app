@@ -55,6 +55,7 @@ dependencies:
   flip_card: ^0.7.0
   page_transition: ^2.0.9
   smooth_page_indicator: ^1.0.0+2
+  loader_overlay: ^2.1.0
 
 dev_dependencies:
   flutter_test:

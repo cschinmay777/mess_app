@@ -1,16 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flip_card/flip_card.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:mess_app/screens/loginscreen/controllers/authcontroller.dart';
+import 'package:mess_app/screens/userhomepage/controllers/userhomepagecontroller.dart';
 import 'package:mess_app/screens/userhomepage/widgets/showCard.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:place_picker/place_picker.dart';
-
 import '../../Colors/colors.dart';
-import '../../widgets/messcard.dart';
-import '../MessOwnerPage/MessOwnerPage.dart';
-import '../User/OnTapMess.dart';
-import '../UserOntapMess/UserOnTap.dart';
 
 class userHomeScreen extends StatefulWidget {
   const userHomeScreen({Key? key}) : super(key: key);
@@ -19,9 +17,10 @@ class userHomeScreen extends StatefulWidget {
   State<userHomeScreen> createState() => _userHomeScreenState();
 }
 
-//AIzaSyBzCbj4xXaaxLSdWMI5iWWVLST8brKU7FU
 class _userHomeScreenState extends State<userHomeScreen> {
   TextEditingController? textController;
+  var controller = Get.put(UserHomePageController());
+  var ctr = Get.put(AuthController());
 
   final List<String> items = [
     'Veg mess',
@@ -31,44 +30,23 @@ class _userHomeScreenState extends State<userHomeScreen> {
     'montly mess'
   ];
 
-  final List<ShowCard> Messlist = [
-    ShowCard(
-        cost: "100",
-        name: "Kadam Mess",
-        img_url_f: "https://i.ytimg.com/vi/oMBLR89GbHw/maxresdefault.jpg",
-        img_url_b:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlQmlu4UvGiC_Sl5CFFZepzfOqi326PZJJRQ&usqp=CAU"),
-    ShowCard(
-        cost: "100",
-        name: "Kadam Mess",
-        img_url_f: "https://i.ytimg.com/vi/oMBLR89GbHw/maxresdefault.jpg",
-        img_url_b:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlQmlu4UvGiC_Sl5CFFZepzfOqi326PZJJRQ&usqp=CAU"),
-    ShowCard(
-        cost: "100",
-        name: "Kadam Mess",
-        img_url_f: "https://i.ytimg.com/vi/oMBLR89GbHw/maxresdefault.jpg",
-        img_url_b:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlQmlu4UvGiC_Sl5CFFZepzfOqi326PZJJRQ&usqp=CAU"),
-    ShowCard(
-        cost: "100",
-        name: "Kadam Mess",
-        img_url_f: "https://i.ytimg.com/vi/oMBLR89GbHw/maxresdefault.jpg",
-        img_url_b:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlQmlu4UvGiC_Sl5CFFZepzfOqi326PZJJRQ&usqp=CAU"),
-    ShowCard(
-        cost: "100",
-        name: "Kadam Mess",
-        img_url_f: "https://i.ytimg.com/vi/oMBLR89GbHw/maxresdefault.jpg",
-        img_url_b:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlQmlu4UvGiC_Sl5CFFZepzfOqi326PZJJRQ&usqp=CAU")
-  ];
   String? selectedValue;
+  bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
     textController = TextEditingController();
+  }
+
+  dataLoadFunction() async {
+    while (isLoading) {
+      if (controller.messlist.length > 0) {
+        setState(() {
+          isLoading = false;
+        });
+      }
+    }
   }
 
   @override
@@ -136,28 +114,27 @@ class _userHomeScreenState extends State<userHomeScreen> {
                             // showLoadingIndicator: true,
                             onPressed: () {
                               print("languagr button pressed");
-                              // await Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => MessOwnerPage(),
-                              // ),
-                              //);
                             },
                           ),
                         ),
                       ), //language button
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(15, 0, 10, 0),
-                        child: Container(
-                          width: 50,
-                          height: 50,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          child: Image.network(
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHk2Y-D_VIdi3Wrydxn2cyfaBOLsfo7XcEvw&usqp=CAU",
-                            fit: BoxFit.cover,
+                        child: GestureDetector(
+                          onTap: () {
+                            ctr.signout();
+                          },
+                          child: Container(
+                            width: 50,
+                            height: 50,
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
+                            child: Image.network(
+                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHk2Y-D_VIdi3Wrydxn2cyfaBOLsfo7XcEvw&usqp=CAU",
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ), //profile pic
@@ -319,10 +296,6 @@ class _userHomeScreenState extends State<userHomeScreen> {
                                 color: Color(0xFFFBFBFF),
                               ),
                               dropdownElevation: 2,
-                              // scrollbarRadius: const Radius.circular(40),
-                              // scrollbarThickness: 6,
-                              // scrollbarAlwaysShow: true,
-                              // offset: const Offset(-20, 0),
                             ),
                           ),
                         ],
@@ -349,15 +322,21 @@ class _userHomeScreenState extends State<userHomeScreen> {
                 ),
                 //child4
                 Expanded(
-                  child: ListView.builder(
-                    itemCount: 5,
-                    itemBuilder: (context, index) => ShowCard(
-                        cost: "100",
-                        name: "Kadam Mess",
-                        img_url_f:
-                            "https://i.ytimg.com/vi/oMBLR89GbHw/maxresdefault.jpg",
-                        img_url_b:
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlQmlu4UvGiC_Sl5CFFZepzfOqi326PZJJRQ&usqp=CAU"),
+                  child: Obx(
+                    () => ListView.builder(
+                      itemCount: controller.messlist.length,
+                      itemBuilder: (context, index) => (controller
+                                  .messlist[index].category ==
+                              "Owner")
+                          ? ShowCard(
+                              cost: "100",
+                              name: "${controller.messlist[index].messname} ",
+                              img_url_f:
+                                  "https://i.ytimg.com/vi/oMBLR89GbHw/maxresdefault.jpg",
+                              img_url_b:
+                                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlQmlu4UvGiC_Sl5CFFZepzfOqi326PZJJRQ&usqp=CAU")
+                          : Center(),
+                    ),
                   ),
                 ),
               ],

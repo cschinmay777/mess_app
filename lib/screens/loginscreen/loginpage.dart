@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:mess_app/controllers/AuthControllers/authcontroller.dart';
+// import 'package:mess_app/controllers/AuthControllers/authcontroller.dart';
+
+import 'controllers/authcontroller.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

@@ -1,20 +1,17 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mess_app/bindings/authbindings.dart';
 import 'package:mess_app/decisionlog.dart';
-import 'package:mess_app/models.dart';
 import 'package:mess_app/screens/Authentication/createaccount.dart';
 import 'package:mess_app/screens/Authentication/forgotpassword.dart';
-import 'package:mess_app/screens/Authentication/loginpage.dart';
-import 'package:mess_app/screens/Authentication/welcomescreen.dart';
-import 'package:mess_app/screens/MessOwnerPage/MessOwnerPage.dart';
-import 'package:mess_app/screens/User/OnTapMess.dart';
+
+import 'package:mess_app/screens/Owner/owner_home.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:mess_app/screens/User/Map.dart';
-import 'package:mess_app/screens/UserOntapMess/UserOnTap.dart';
+import 'package:mess_app/screens/loginscreen/loginpage.dart';
+import 'package:mess_app/screens/userhomepage/bindings/UserHomePageBindings.dart';
 import 'package:mess_app/screens/userhomepage/userhomepage.dart';
+import 'package:mess_app/screens/welcomescreen/welcomescreen.dart';
 
 import 'issignedin.dart';
 
@@ -47,20 +44,21 @@ class MyApp extends StatelessWidget {
             name: "/create",
             page: () => CreateAccount(),
             binding: AuthBinding()),
-        GetPage(name: "/User", page: () => userHomeScreen()),
-        GetPage(name: "/OnTapUser", page: () => UserOnTap()),
-        GetPage(name: "/Map", page: () => Distance()),
-        GetPage(name: "/issignin", page: () => IsSignin()),
-        GetPage(name: "/owner", page: () => MessOwnerPage()),
-        GetPage(name: "/mywid", page: () => MyWidget()),
         GetPage(
-            name: "/ontap",
-            page: () {
-              MessModel messmodel = Get.arguments;
-              transition:
-              Transition.leftToRight;
-              return OnTapMess();
-            }),
+          name: "/User",
+          page: () => userHomeScreen(),
+          binding: UserHomePageBindings(),
+        ),
+        // GetPage(name: "/OnTapUser", page: () => OnTapMess()),
+        GetPage(name: "/issignin", page: () => IsSignin()),
+        GetPage(name: "/owner", page: () => OwnerHomeScreen()),
+        GetPage(name: "/mywid", page: () => MyWidget()),
+        // GetPage(
+        //     name: "/ontap",
+        //     page: () {
+        //       Transition.leftToRight;
+        //       return OnTapMess();
+        //     }),
       ],
     );
   }
